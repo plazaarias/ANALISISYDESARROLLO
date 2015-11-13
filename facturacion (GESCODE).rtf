@@ -1,0 +1,124 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang3082{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Msftedit 5.41.21.2509;}\viewkind4\uc1\pard\sa200\sl276\slmult1\lang10\f0\fs22 FACTURACI\'d3N (GESCODE)\par
+\par
+Planteamiento del problema\par
+\par
+Atento S.A. es una empresa  que presta las instalaciones f\'edsicas y talento humano para llevar a cabo labores de procesos para determinadas empresas, en este caso presta soporte de segundo y tercer nivel a los clientes que tienen servicios contratados de l\'edneas telef\'f3nicas fijas de MOVISTAR, a pesar que el servicio de soporte se presta para los usuarios, los niveles de servicio y cumplimiento son impuestos por nuestro cliente MOVISTAR \par
+\par
+En la actualidad, los analistas que facturan las l\'edneas telef\'f3nicas fijas de Movistar lo hacen en dos fases, suspensiones y reconexiones, realizan este proceso descargando archivos planos (.txt) para despu\'e9s delimitarlos en archivos de Excel (.xls), seguido a este proceso hacen filtros, comparaciones, borran algunos registros duplicados, ejecutan en cada central telef\'f3nica la tarea asignada y generan estados para actualizaci\'f3n del registro en sistema hecho por cada analista, el problema es que hay una cantidad muy amplia de registros y c\'f3mo se realiza de manera manual genera demoras, y adicional a este proceso los analistas tienen que  ejecutar las tareas  en central en un lapso de 4 horas partiendo de la fecha en la cual est\'e1 la orden de reconexi\'f3n o suspensi\'f3n suministrada por los archivos descargados de la p\'e1gina que provee el cliente, esto afecta  el cumplimiento de los niveles establecidos por el cliente (MOVISTAR), a pesar de que parte de este proceso se est\'e1 ejecutando por medio de macros en Excel, es necesario una base de datos que permita realizar actualizaciones, ya que Excel no es una base de datos y no permite guardar mucha informaci\'f3n, se requiere migrar los archivos planos (txt) a una aplicaci\'f3n para que posteriormente se ingrese la informaci\'f3n a una base de datos MYSQL, adicionalmente se establecer\'e1 perfiles para los roles de los profesionales que interact\'faan con el sistema, teniendo claro que los analistas ingresan para actualizar los registros y ejecutar  suspensi\'f3n o reconexiones seg\'fan la tarea que se le asigne, los  supervisores ingresan para que as\'ed el sistema genere el informe diario que exige el cliente (Movistar) para el control de los est\'e1ndares de niveles de servicio requeridos, tambi\'e9n tendr\'e1 la opci\'f3n de asignar las tareas para cada analista en el momento en el que ingresen a su jornada laboral y asi llevar control de la labor generada por los analistas, el agente de calidad ingresa para ver en sistema el hist\'f3rico del registro o verificar uno en concreto y a su vez realizar la revisi\'f3n del mismo.  \par
+\par
+Requerimientos Funcionales\par
+\par
+\'b7       \par
+El ingreso y salida de los profesionales que acceden al sistema se registrar\'e1 dependiendo el rol (Supervisor, Analista o Asesor de Calidad), para tener las diferentes opciones dentro la aplicaci\'f3n.\par
+\par
+Al momento de que un usuario requiere ser validado en el sistema, este presentara un pantalla de autenticaci\'f3n de usuario para que el profesional ingrese su n\'famero de identificaci\'f3n y contrase\'f1a, al instante de enviar estos datos el sistema valida la informaci\'f3n contra los de la base de datos, y se tiene que tener en cuenta que la contrase\'f1a tendr\'e1 que ser cambiada mensualmente. \par
+\par
+La informaci\'f3n debe ser manipulada por medio de un motor de base de datos  \par
+\par
+El sistema debe permitir, guardar los datos y un hist\'f3rico de los mismo para posteriormente generar informe\par
+\par
+El sistema tendr\'e1 un usuario administrador que permitir\'e1 crear, modificar, administrar y eliminar los usuarios que se requieran dentro del mismo sistema\par
+\par
+El sistema tomar\'e1 los archivos planos la cual ser\'e1n migrados desde la p\'e1gina web administrada por parte del Cliente (Movistar), y a su vez ingresar informaci\'f3n en la base de datos MYSQL\par
+\par
+.El sistema asignar\'e1 tareas de trabajo de acuerdo a los archivos planos (TXT) migrados, seguido a esto realizar\'e1 los filtros de las localidades que pertenecen a la zona centro, sur y norte del pa\'eds, asignando de manera equitativa y de acuerdo al perfil de cada analista para que sea ejecutada en la jornada laboral, teniendo en cuenta que se establecer\'e1n cortes y tiempos para que se de el cumplimiento de la ejecuci\'f3n de todas las tareas, esto se realizar\'e1 con el perfil del supervisor\par
+  \par
+\par
+El sistema dar\'e1 prioridad a las l\'edneas telef\'f3nicas para reconectar o suspender en un lapso de 4 horas para ser ejecutadas por los analistas, de igual forma lo que se encuentra fuera del rango de las 4 horas el sistema generar\'e1 una tarea o una orden nueva de trabajo, para verificar porque no se ha ejecutado o si hay alg\'fan problema con la la central para ejecutarla. \par
+\par
+La actualizaci\'f3n del estado de la tarea u orden de trabajo s\'f3lo se establecer\'e1 por el perfil de analista y el sistema solo permite la actualizaci\'f3n de los estados permitidos  como lo son:\par
+Estado 1 (Abonado Desprogramado)\par
+Estado 2 (Problemas Central)\par
+Estado 4 (Abonado Procesado)\par
+\par
+De acuerdo a las personas programadas en el turno el sistema enviar\'e1 un correo al iniciar su jornada laboral, de las \'f3rdenes de trabajo que hay en el momento para ser ejecutadas.\par
+\par
+El sistema de acuerdo a los estados actualizados por el perfil de analistas, generar\'e1 un informe diario de los registros y la ejecuci\'f3n de cada tarea, la cual solo podr\'e1 ser solicitado con el perfil de supervisor, este informe ser\'e1 en un archivo de excel (.xls) para ser consolidado.\par
+\par
+Para los informes generales que requiera el supervisor, en donde se pueda consultar el nivel de cumplimiento mensual de las tareas ejecutadas dentro los tiempos establecidos, el sistema generar\'e1 el informe donde se pueda verificar los registros totales que ingresan, los actualizados dentro de los tiempos, los que no est\'e1n dentro de los tiempos, los registros por analistas y los registros que tienen problemas para ser ejecutados, este informe se generar\'e1 con la fecha de corte al finalizar cada mes.\par
+\par
+El sistema tendr\'e1 la opci\'f3n para los analistas de visualizar el nivel de servicio obtenido por los informes diarios y mensuales, todos los dias podran visualizar este nivel de servicio que ser\'e1 sobre el 100% de efectividad.\par
+\par
+El sistema permitir\'e1 al perfil de asesor de calidad la consulta de un registro, y este proceso lo tendr\'e1 que realizar con las dos opciones que le permite el sistema\par
+ \par
+Caso 1 Generador de caso aleatorio: Donde el sistema tomar\'e1 un registro de la base de datos aleatoriamente y permitir\'e1 revisar el hist\'f3rico. \par
+Caso 2 Generador espec\'edfico: En este caso el sistema permite al asesor de calidad tomar el registro que requiera revisar junto a su hist\'f3rico.\par
+\par
+En caso de que haya registros actualizados pero que no se ejecuten en la central telef\'f3nica despu\'e9s de hacer la revisi\'f3n, el asesor de calidad tendr\'e1 la opci\'f3n dentro del sistema de enviar el error al analista para hacer la retroalimentaci\'f3n u observaci\'f3n del caso. \par
+\par
+\par
+Requerimientos No Funcionales\par
+\par
+\'b7         El sistema va tener un color azul para tener la apariencia corporativa\par
+\par
+\'b7         La base de datos estar\'e1 en un equipo servidor\par
+\par
+\'b7         La arquitectura es cliente servidor para que la ejecuci\'f3n del sistema\par
+\par
+\'b7   Los informes, la asignaci\'f3n de tareas, los hist\'f3ricos de los registros de cada       analista y todos los archivos que genere el sistema ser\'e1n en archivos de Excel (.xls)\par
+\par
+ \par
+ \par
+\par
+\par
+\par
+Objetivo General\par
+\par
+Sistematizar, administrar y generar informes de las tareas de los analistas, en el proceso de facturaci\'f3n de las l\'edneas telef\'f3nicas fijas de la empresa Movistar.\par
+\par
+\par
+\par
+\par
+Objetivos Espec\'edficos\par
+\par
+Sistematizar, distribuir y priorizar las tareas por cada puesto de trabajo, ya que esto ayudar\'e1 al cumplimiento de los indicadores de servicio impuestos por el cliente.\par
+\par
+Controlar el registro diario de cada analista para llevar el cumplimiento que requiere el cliente.\par
+\par
+Generar una base de datos donde haya un hist\'f3rico para procesos de calidad.\par
+ \par
+\par
+\par
+Procesos Estrat\'e9gicos\par
+ \par
+An\'e1lisis de la informaci\'f3n ingresada mediante archivos TXT.\par
+ \par
+Revisi\'f3n de los registros durante la jornada laboral.\par
+ \par
+Cuantificar los informes para enviar el registro al cliente (MOVISTAR).\par
+ \par
+Revisar los registros por parte de los analistas para llevar controles de calidad.\par
+ \par
+ \par
+\par
+\par
+Procesos Claves\par
+ \par
+Sistematizar las tareas de an\'e1lisis de los archivos TXT, generar informes cada vez que se requiera por parte del supervisor, administrar las tareas, consultar registros para procesos de calidad \par
+ \par
+Procesos de Apoyo\par
+\par
+Como apoyo para la ejecuci\'f3n de la aplicaci\'f3n tenemos el lenguaje de programaci\'f3n Visual Basic.\par
+\par
+Para las consultas de los registros que se requieren y los informes, se utilizara una base de datos MYSQL.\par
+\par
+\par
+\par
+El actor (Supervisor )\par
+Genera el control de cada analista por labor diaria, administra la asignaci\'f3n de las tareas  y realiza los informes de la labor generada diaria.\par
+El supervisor ingresa al sistema para consultar los distintos perfiles y sus usuarios, para tener acceso a los informes requeridos por el cliente y la asignaci\'f3n de tareas sea aleatoria para cada analista.\par
+El actor (Analista)\par
+Es el encargado de ejecutar las tareas y actualizar los registros. \par
+El analista tiene la asignaci\'f3n de las tareas que se requieren durante la jornada laboral, e ingresa a la opci\'f3n de actualizaci\'f3n de registros para llevar el control de todo ejecutado al finalizar su turno\par
+El actor (Agente de Calidad)\par
+El agente de calidad tiene acceso al genera miento autom\'e1tico para poder acceder a la base de datos, tener informaci\'f3n de un registro y al hist\'f3rico del mismo para llevar el proceso de revisi\'f3n, tambi\'e9n para llevar el control de calidad tendr\'e1 el acceso al genera miento espec\'edfico para determinar un registro en concreto.\par
+\par
+\par
+\par
+\par
+El sistema FAC, es aplicaci\'f3n que permite a  al usuarios sistematizar, distribuir, priorizar de acuerdo a las fechas que se ingresan por medio de los archivos planos,  de tareas para los trabajadores de la empresa ATENTO S.A, adicionalmente permite generar informes y graficarlos.\par
+\par
+mediante archivos planos (TXT)  el sistema se realizar\'e1 el an\'e1lisis para determinar los registros que se ejecutar\'e1n durante la jornada laboral, el supervisor tendr\'e1 la opci\'f3n mediante un usuario de asignar la cantidad exacta de registros y equitativa para los analistas que ingresan a su jornada laboral, la asignaci\'f3n de estas tareas tendr\'e1 una una prioridad de acuerdo al fecha generada por el sistema que provee los registros, adicionalmente diario tendra la opcion de generar los informes de los registros diarios de cada analista, el analista ingresa al sistema para ejecutar los registros que se le asignen, tendr\'e1 que verificar su correo corporativo porque se asignar\'e1 trabajo cada cuatro horas, de acuerdo a las normas establecidas por el cliente hay que realizar calidad por este motivo un Agente de calidad tendr\'e1 la opci\'f3n de verificar registros de cada analista y su hist\'f3rico.\par
+}
+ 
